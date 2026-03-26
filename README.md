@@ -1,4 +1,4 @@
-# Aprendizaje Automático Avanzado
+# Advanced Machine Learning
 
 Repository with practices, exercises and projects for the subject **Advanced Machine Learning**.
 
