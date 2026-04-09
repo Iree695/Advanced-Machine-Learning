@@ -20,3 +20,14 @@ def fitness(pose, weights, values, capacity):
         return 0
     else:
         return total_values
+    
+# Sigmoid function -- Key piece for the  Binary PSO
+# - PROBLEM: Position =  [0,1] while speed is a real number. It is imposible to do directly x = X + V
+# - SOLUTION: Changing the speed to a probability with the sigmoid function and then choose randomly
+# - Ecuation of the sigmoid function --> σ(v) = 1 / (1 + e^(-v)) 
+#   - If v is very positive --> σ(v) = 1 --> bit = 1
+#   - If v is very negative --> σ(v) = 0 --> bit = 0
+
+def sigmoid(v):
+    func = 1 / 1 + np.exp(-np.clip(v, -15, 15))
+    return func
