@@ -69,7 +69,11 @@ class Particle:
         
 # Knapsack Class (Main)
 # - Maximization Problem
+# - Speed Formula: V = w*V + c1*r1*(pbest - X) + c2*r2*(gbest - X) 
+    # where (pbest - X) and (gbest - X) are bit differencies
+    # result in {-1, 0, +1}  pushing speed towards where the best bits are
 # - Binary update of the position using sigmoid
+    # 
 
 class Knapsack:
     def __init__(self, weights, values, capacity, n_particles, max_iteration, 
@@ -96,6 +100,23 @@ class Knapsack:
 
     def optimize(self):
         for iteration in range(self.max_iterations):
-            # Evaluation and updating the global best
+            # Evaluation and updating the global best:
             for particle in self.swarm:
                 value = particle.evaluate(self.weights, self.values, self.capacity)
+
+                if value > self.global_best_value:
+                    self.global_best_value = value
+                    self.global_best_pose = particle.position.copy()
+
+            # Updating speed and position:
+            for particle in self.swarm:
+                r1 = random.random()
+                r2 = random.random()
+                # Speed Formula
+                cognitive = self.c1 * r1 * (particle.personal_best_position - particle.position)
+                social = self.c2 * r2 * (particle.global_best_position - particle.position)
+
+                particle_speed = self.w * particle_speed + cognitive + social
+            
+            # Binary updating the position
+
