@@ -132,4 +132,13 @@ class Knapsack:
                     position.append(0)
             particle.position = np.array(position, dtype = float)
 
+        if iteration % 10 == 0: # if it is posible to divide it by 10
+            w_used = np.dot(self.global_best_pose, self.weights)
+            print(f"Iter {iteration:>3d}"
+                  f"Mejor valor: {self.gbest_value:.0f} €"
+                  f"Peso: {w_used:.1f}/{self.capacity} kg")
+    
+        return self.global_best_position, self.global_best_value
+    
+    # Main execution and results
 
