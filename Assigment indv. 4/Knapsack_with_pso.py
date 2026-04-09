@@ -66,3 +66,36 @@ class Particle:
             self.personal_best_position = self.position.copy()
         else:
             return evalue
+        
+# Knapsack Class (Main)
+# - Maximization Problem
+# - Binary update of the position using sigmoid
+
+class Knapsack:
+    def __init__(self, weights, values, capacity, n_particles, max_iteration, 
+                 w = 0.7, c1 = 1.5, c2 = 1.5):
+        self.weights = weights
+        self.values = values
+        self.capacity = capacity
+        self.n_particles = n_particles
+        self.max_iteration = max_iteration
+
+        # Hyperparameters:
+        self.w = w   # Inertia:memory of the previous speed
+        self.c1 = c1 # Cognitive: attraction to one's own best
+        self.c2 = c2 # Social: attraction towards the globals best
+
+        n_items = len(weights)
+        self.swarm = []
+        for _ in range(n_particles):
+            self.swarm.append(Particle(n_items))
+
+        # Global best 
+        self.global_best_pose = self.swarm[0].position.copy()
+        self.global_best_value = float("inf")
+
+    def optimize(self):
+        for iteration in range(self.max_iterations):
+            # Evaluation and updating the global best
+            for particle in self.swarm:
+                value = particle.evaluate(self.weights, self.values, self.capacity)
