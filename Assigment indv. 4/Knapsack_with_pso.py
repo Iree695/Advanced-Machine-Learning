@@ -73,7 +73,11 @@ class Particle:
     # where (pbest - X) and (gbest - X) are bit differencies
     # result in {-1, 0, +1}  pushing speed towards where the best bits are
 # - Binary update of the position using sigmoid
-    # 
+    # Here we convert the V in a probability with the sigmoid function. Bits are decided randomly
+    # So:
+        # prob[i] = σ(V[i])
+        # X[i] = 1 if random() < prob[i]
+        # X[i] = 0 otherwise
 
 class Knapsack:
     def __init__(self, weights, values, capacity, n_particles, max_iteration, 
@@ -119,4 +123,13 @@ class Knapsack:
                 particle_speed = self.w * particle_speed + cognitive + social
             
             # Binary updating the position
+            prob = sigmoid(particle_speed)
+            position = []
+            for p in prob:
+                if random.random() < p:
+                    position.append(1)
+                else:
+                    position.append(0)
+            particle.position = np.array(position, dtype = float)
+
 
