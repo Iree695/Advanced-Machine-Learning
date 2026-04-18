@@ -66,5 +66,16 @@ class ACO:
             tour.append(next_city)
             unvisited.remove(next_city)
         return tour
-    
-    
+
+    def calculate_probabilities(self, current_city, unvisited):
+            unvisited_list = list(unvisited)
+            pheromones = self.pheromone[current_city, unvisited_list] ** self.alpha
+            visibilities = self.visibility[current_city, unvisited_list] ** self.beta
+            
+            probs = pheromones * visibilities
+            sum_probs = np.sum(probs)
+            
+            if sum_probs == 0:
+                return np.ones(len(unvisited_list)) / len(unvisited_list)
+            
+            return probs / sum_probs
