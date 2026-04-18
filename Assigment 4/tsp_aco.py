@@ -85,3 +85,12 @@ class ACO:
         for i in range(len(tour)):
             length += self.dist_matrix[tour[i], tour[(i + 1) % self.n_cities]]
         return length
+    
+    def update_pheromones(self, tours, lengths):
+        self.pheromone *= (1 - self.rho)
+        for tour, length in zip(tours, lengths):
+            contribution = self.q / length
+            for i in range(len(tour)):
+                c1, c2 = tour[i], tour[(i + 1) % self.n_cities]
+                self.pheromone[c1, c2] += contribution
+                self.pheromone[c2, c1] += contribution
