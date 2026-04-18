@@ -51,4 +51,20 @@ class ACO:
         for _ in range(self.n_ants):
             tour = self.build_tour()
             tours.append(tour)
-        return tours      
+        return tours
+    
+    def build_tour(self):
+        startcity = np.random.randint(self.n_cities)
+        tour = [startcity]
+        unvisited = set(range(self.n_cities))
+        unvisited.remove(startcity)
+        
+        while unvisited:
+            current_city = tour[-1]
+            probabilities = self.calculate_probabilities(current_city, unvisited)
+            next_city = np.random.choice(list(unvisited), p = probabilities)
+            tour.append(next_city)
+            unvisited.remove(next_city)
+        return tour
+    
+    
