@@ -121,11 +121,9 @@ class ACO_TSP_CSV:
     def calculate_probabilities(self, current_city, unvisited):
         """
         Calculate the probabilities of moving to each unvisited city from the current city.
-        
         Args:
             current_city (int): Index of the current city.
             unvisited (set): Set of unvisited city indices.
-        
         Returns:
             np.ndarray: Array of probabilities for each unvisited city.
         """
