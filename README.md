@@ -9,10 +9,14 @@ APREN.AUTO.AVAN/
 │
 ├── Assigment 1 Fashion mnist/
 ├── Assigment 2/
+├── Assigment 3/
+├── Assigment 4/
 ├── Assigment indv. 1/
 ├── Assigment indv. 2/
 ├── Assigment indv. 3/
+├── Assigment indv. 4/
 ├── Session 05/
+├── Session 11/
 └── .vscode/
 ```
 
