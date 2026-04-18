@@ -79,3 +79,9 @@ class ACO:
                 return np.ones(len(unvisited_list)) / len(unvisited_list)
             
             return probs / sum_probs
+    
+    def calculate_tour_length(self, tour):
+        length = 0
+        for i in range(len(tour)):
+            length += self.dist_matrix[tour[i], tour[(i + 1) % self.n_cities]]
+        return length
