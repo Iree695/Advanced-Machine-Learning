@@ -46,4 +46,9 @@ class ACO:
 
             return best_tour, best_length, history
         
-            
+    def generate_tours(self):
+        tours =  []
+        for _ in range(self.n_ants):
+            tour = self.build_tour()
+            tours.append(tour)
+        return tours      
