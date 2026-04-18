@@ -25,13 +25,19 @@ APREN.AUTO.AVAN/
 ### Assignments
 
 * **Assignment 1 - Fashion MNIST**
-
     * Image classification with neural networks
     * Processing and use of the Fashion MNIST dataset
 
 * **Assignment 2**
-
     * Implementation of advanced techniques (e.g., Q-Learning)
+
+* **Assignment 3**
+    * PSO_IMPLEMENTATION
+        * PSO topology comparison framework with integrated CSV input/output for automated experimental analysis.
+
+* **Assignment 4**
+    * TSP-ACO Solver
+        * A Traveling Salesman Problem solver using Ant Colony Optimization with a 100% CSV data workflow.
 
 * **Individual Assignments**
     * **Indv 1**
@@ -40,6 +46,9 @@ APREN.AUTO.AVAN/
         * Implementation of a Reinforcement Learning system using the Actor-Critic approach with parallel execution.
     * **Indv 3**
         * Implementation of an optimized Perceptron using Genetic Algorithms, compared to a classical perceptron trained in a traditional way.
+    * **Indv 4**
+        * PSO Topology Experiments
+            * A comparative study of PSO topologies using a 100% CSV-driven experimental workflow.
 
 
 ### Sessions
