@@ -54,4 +54,5 @@ APREN.AUTO.AVAN/
 Irene Valle Ares
 
 ## Asignatura
-Aprendizaje Automático Avanzado
+Advanced Machine Learning
+
